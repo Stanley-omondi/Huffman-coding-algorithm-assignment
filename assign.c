@@ -40,7 +40,7 @@ void swapNodes(Node **a, Node **b) {
     *b = temp;
 }
 
-// Heapify the heap (used to maintain min-heap property)
+// Heapify the heap
 void minHeapify(MinHeap *heap, int index) {
     int smallest = index;
     int left = 2 * index + 1;
@@ -77,7 +77,7 @@ void insertMinHeap(MinHeap *heap, Node *node) {
     heap->array[i] = node;
 }
 
-// Build the min heap
+
 void buildMinHeap(MinHeap *heap) {
     for (int i = (heap->size - 2) / 2; i >= 0; --i)
         minHeapify(heap, i);
@@ -115,13 +115,13 @@ void calculateCompressedSize(Node *root, int *compressedSize, int depth) {
 
 // Main function to generate Huffman codes
 void generateHuffmanCodes(char *text) {
-    // Calculate character frequencies
+    
     int frequency[256] = {0};
     for (int i = 0; text[i] != '\0'; i++) {
         frequency[(unsigned char)text[i]]++;
     }
 
-    // Create a min heap and populate it
+    
     MinHeap *heap = createMinHeap(256);
     for (int i = 0; i < 256; i++) {
         if (frequency[i] > 0) {
@@ -150,7 +150,7 @@ void generateHuffmanCodes(char *text) {
     printf("Huffman Codes:\n");
     printCodes(root, code, 0);
 
-    // Calculate sizes
+  
     int uncompressedSize = strlen(text) * 8;
     int compressedSize = 0;
     calculateCompressedSize(root, &compressedSize, 0);
@@ -164,9 +164,9 @@ int main() {
 
     printf("Enter text to compress: ");
     fgets(text, sizeof(text), stdin);
-    text[strcspn(text, "\n")] = '\0'; // Remove trailing newline
+    text[strcspn(text, "\n")] = '\0'; 
 
     generateHuffmanCodes(text);
 
-    return 0;
+Â Â Â Â returnÂ 0;
 }
